@@ -159,7 +159,7 @@ async function fetchSearchWeatherInfo(city) {
         if (data.cod === "404") {
             // City not found - show "not found" image
             loadingScreen.classList.remove("active");
-            notFoundContainer.style.display = "block"; // Show the not-found image and message
+            notFoundContainer.style.display = "flex"; // Show the not-found image and message
             return;
         }
         
