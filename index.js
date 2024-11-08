@@ -140,7 +140,9 @@ searchForm.addEventListener("submit", (e) => {
     if(cityName === "")
         return;
     else 
+    notFoundContainer.style.display ="none"
         fetchSearchWeatherInfo(cityName);
+
 })
 
 async function fetchSearchWeatherInfo(city) {
