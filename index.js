@@ -147,11 +147,22 @@ async function fetchSearchWeatherInfo(city) {
     userInfoContainer.classList.remove("active");
     grantAccessContainer.classList.remove("active");
 
+    const notFoundContainer = document.querySelector(".not-found-container");
+    notFoundContainer.style.display = "none";
+
     try {
         const response = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
           );
         const data = await response.json();
+
+        if (data.cod === "404") {
+            // City not found - show "not found" image
+            loadingScreen.classList.remove("active");
+            notFoundContainer.style.display = "block"; // Show the not-found image and message
+            return;
+        }
+        
         loadingScreen.classList.remove("active");
         userInfoContainer.classList.add("active");
         renderWeatherInfo(data);
