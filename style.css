@@ -185,9 +185,7 @@ h1 {
     font-weight: 200;
 }
 
-.not-found-container {
-    display: none;
-}
+
 
 .not-found-container{
     flex-direction: column;
