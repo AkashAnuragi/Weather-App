@@ -6,7 +6,7 @@ const grantAccessContainer = document.querySelector(".grant-location-container")
 const searchForm = document.querySelector("[data-searchForm]");
 const loadingScreen = document.querySelector(".loading-container");
 const userInfoContainer = document.querySelector(".user-info-container");
-
+const notFoundContainer = document.querySelector(".not-found-container");
 // initially variables need..
 
 let oldTab = userTab;
@@ -29,6 +29,7 @@ function switchTab(newTab) {
         else {
             searchForm.classList.remove("active");
             userInfoContainer.classList.remove("active");
+            notFoundContainer.style.display = "none";
             getfromSessionStorage();
         }
     }
@@ -147,8 +148,6 @@ async function fetchSearchWeatherInfo(city) {
     userInfoContainer.classList.remove("active");
     grantAccessContainer.classList.remove("active");
 
-    const notFoundContainer = document.querySelector(".not-found-container");
-    notFoundContainer.style.display = "none";
 
     try {
         const response = await fetch(
